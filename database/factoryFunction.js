@@ -13,14 +13,26 @@ module.exports = function waitersApp(db){
     }
 
     async function waitersDays(name, days_id){
-        const exist = await getUserByName(name)
-        if(exist){
-            const { id } = exist
-            return await db.none("insert into shifts ( user_id, weekdays_id) values ($1, $2);", [id, days_id])
+        let result
+        const gettingUser = await getUserByName(name)
+        console.log(gettingUser)
+        if(gettingUser){
+            const { id } = gettingUser
+            for(var i = 0; i <= days_id.length; i++){
+                result = await db.none("insert into shifts ( user_id, weekdays_id) values ($1, $2);", [id, days_id[i]]) 
+            }
+            console.log(result)
+            return result
+            
         }else{
             await storingUserNames(name)
-            const { id } = exist;
-            return await db.none("insert into shifts ( user_id, weekdays_id) values ($1, $2);", [id, days_id])
+            const newUser = await getUserByName(name)
+            const { id } = newUser;
+            for(var i = 0; i <= days_id.length; i++){
+                result = await db.none("insert into shifts ( user_id, weekdays_id) values ($1, $2);", [id, days_id[i]]) 
+            }
+
+            return result
         }
     }
 
@@ -36,6 +48,7 @@ module.exports = function waitersApp(db){
         storingUserNames,
         getWeekdays,
         waitersDays,
-        userSelection
+        userSelection,
+        getUserByName
     }
 }

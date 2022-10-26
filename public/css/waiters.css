@@ -1,6 +1,13 @@
 h1{
     text-align: center;
 }
-form {
-    align-items: center;
+.form {
+    display: flex;
+    margin-left: 30%;
 }
+
+.btn {
+    margin-top: 1%;
+    margin-left: 65%;
+}
+
