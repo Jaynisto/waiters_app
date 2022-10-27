@@ -50,22 +50,14 @@ app.get('/waiters/:username', async (req, res) => {
 app.post('/waiters/:username', async (req, res) => {
     const names = req.params.username;
     const { days } = req.body;
-    // console.log(days)
-    await sendOrGetData.waitersDays(names, days)
     const userDetails =  await sendOrGetData.waitersDays(names, days);
-    console.log(userDetails)
-
     res.redirect("/waiters/" + names)
 })
 
 
-app.get('/admin/:names',async(req, res)=>{
-    let user = req.params.names;
-
-    const users = await sendOrGetData.userSelection(user)
-
+app.get('/days',async(req, res)=>{
+    const users = await sendOrGetData.getEnteredWeekdays()
     res.render("admin", {users});
-    
 });
 
 

@@ -8,7 +8,12 @@
     <body>
         <div class="container">
             <h1>Admin Page</h1><br>
-            <label>{{users}}</label>
+            <div class="weekdays">
+                {{#each users}}
+                <input type="checkbox" name="days" value="{{id}}">
+                <label>{{weekdays}}</label>
+                {{/each}}
+            </div>
         </div>
     </body>
 </html>
