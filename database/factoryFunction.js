@@ -5,18 +5,22 @@ module.exports = function waitersApp(db){
     }
 
     async function getWeekdays(){
-       return await db.any('SELECT * FROM weekdays;')
+        const weekDays = await db.any('SELECT * FROM weekdays;');
+        
+
+
+       return weekDays
     }
 
 
     const getUserByName = async (name) => {
-        return await db.oneOrNone('select * from users where  username = $1;',[name])
+        return await db.oneOrNone('select * from users where username = $1;',[name])
     }
 
     async function waitersDays(name, days_id){
         let result
         const gettingCurrentUser = await getUserByName(name)
-        if(gettingCurrentUser ){
+        if(gettingCurrentUser){
             const { id } = gettingCurrentUser
             for(var i = 0; i < days_id.length; i++){
                 const days = days_id[i];
@@ -44,9 +48,24 @@ module.exports = function waitersApp(db){
     }
 
     async function getEnteredWeekdays(){
-        const gettingDays = await db.manyOrNone('SELECT * FROM shifts JOIN weekdays ON shifts.weekdays_id = weekdays.id;')
-        console.log(gettingDays)
-        return gettingDays;
+        const weekDays  = await getWeekdays();
+        const daysAndUsers = weekDays.map(async (day) => {
+            const sql = 'select username from shifts join users on users.id = user_id  where weekdays_id  = $1'
+            const users = await db.manyOrNone(sql, day.id)
+            const gettingTheObject = users.map(user => user.username);
+
+
+            return {
+                ...day,
+                users: gettingTheObject
+            }
+            
+        });
+
+
+        const data = await Promise.all(daysAndUsers)
+
+        return data;
     }
     
 
@@ -60,3 +79,18 @@ module.exports = function waitersApp(db){
         getEnteredWeekdays
     }
 }
+
+
+
+
+
+
+var days = [
+    {
+        day: 'Sunday',
+        waiters: [
+            'John',
+            'Lia'
+        ]
+    }
+]

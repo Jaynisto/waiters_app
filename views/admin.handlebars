@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="css/waiters.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Admin Page</h1><br>
-            <div class="weekdays">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/waiters.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin Page</h1><br>
+        <div class="weekdays">
+            {{!-- {{#each users}}
+            <input type="checkbox" name="days" value="{{id}}">
+            <label>{{username}}</label>
+            <label>{{weekdays}}</label>
+            {{/each}} --}}
+
+            {{!-- <table>
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
                 {{#each users}}
-                <input type="checkbox" name="days" value="{{id}}">
-                <label>{{weekdays}}</label>
+                <tr>
+                    <td>{{username}}</td>
+                </tr>
                 {{/each}}
-            </div>
+            </table> --}}
+
+
+
+
+
+            <table border="1" style="border-collapse: collapse;">
+                <tr>
+                {{#each days}}
+                    <th>{{weekdays}}</th>
+                {{/each}}
+                </tr>
+                <tr>
+                    {{#each days}}
+                        <td>
+                        {{#each users}}
+                        <li style="list-style-type: none;">{{this}}</li>
+                        {{/each}}
+                        </td>
+                    {{/each}}
+                </tr>
+            </table>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

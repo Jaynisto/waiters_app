@@ -15,4 +15,8 @@ h1{
     justify-content:flex-start;
     padding: 2%;
 }
+table {
+    margin-left: auto;
+    margin-right: auto;
+  }
 

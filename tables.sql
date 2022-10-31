@@ -27,4 +27,3 @@ CREATE TABLE shifts(
     foreign key (user_id) references users(id),
     foreign key (weekdays_id) references weekdays(id)
 );
-

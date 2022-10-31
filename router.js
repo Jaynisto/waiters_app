@@ -56,8 +56,9 @@ app.post('/waiters/:username', async (req, res) => {
 
 
 app.get('/days',async(req, res)=>{
-    const users = await sendOrGetData.getEnteredWeekdays()
-    res.render("admin", {users});
+    const days = await sendOrGetData.getEnteredWeekdays()
+    console.log(days, "In")
+    res.render("admin", {days});
 });
 
 
