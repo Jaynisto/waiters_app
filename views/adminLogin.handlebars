@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/waiters.css">
-    <title>Log In</title>
+    <link rel="stylesheet" href="/css/waiters.css">
+    <title>Admin</title>
 </head>
 <body>
-    <h1>Login page</h1><br>
-    
-    <form action="login" method="POST" class="login">
+
+    <form action="/adminLogin/{{name}}" method="POST" class="login">
         <label for="password">Insert Secret Password:</label><br>
-        <input type="text" name="code"><br><br>
+        <input type="text" name="adminCode"><br><br>
         <button type="submit">Log in</button>
     </form>
-
+    
 </body>
 </html>

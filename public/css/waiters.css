@@ -19,5 +19,25 @@ table {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-  }
+}
+
+.container3 {
+    margin: auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.login{
+    margin: auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+}
+.successMessage {
+    color: rgb(59, 219, 10);
+}
+.errorMessage{
+    color: rgba(228, 4, 4, 0.877);
+}
 

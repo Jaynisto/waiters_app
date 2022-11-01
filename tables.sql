@@ -27,3 +27,11 @@ CREATE TABLE shifts(
     foreign key (user_id) references users(id),
     foreign key (weekdays_id) references weekdays(id)
 );
+
+CREATE TABLE admin(
+    id SERIAL PRIMARY KEY,
+    adminName VARCHAR(55), 
+    adminPassword VARCHAR(55)
+);
+
+INSERT INTO admin(adminName,adminPassword) VALUES('Fanie', 'Johnson28@admin');
