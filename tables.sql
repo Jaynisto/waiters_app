@@ -11,13 +11,13 @@ CREATE TABLE weekdays(
     weekdays VARCHAR(50)
 );
 
-INSERT INTO weekdays(weekdays) VALUES('monday');
+INSERT INTO weekdays(weekdays) VALUES('Monday');
 INSERT INTO weekdays(weekdays) VALUES('Tuesday');
-INSERT INTO weekdays(weekdays) VALUES('wednesday');
-INSERT INTO weekdays(weekdays) VALUES('thursday');
-INSERT INTO weekdays(weekdays) VALUES('friday');
-INSERT INTO weekdays(weekdays) VALUES('saturday');
-INSERT INTO weekdays(weekdays) VALUES('sunday');
+INSERT INTO weekdays(weekdays) VALUES('Wednesday');
+INSERT INTO weekdays(weekdays) VALUES('Thursday');
+INSERT INTO weekdays(weekdays) VALUES('Friday');
+INSERT INTO weekdays(weekdays) VALUES('Saturday');
+INSERT INTO weekdays(weekdays) VALUES('Sunday');
 
 
 CREATE TABLE shifts(

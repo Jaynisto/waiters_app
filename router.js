@@ -43,37 +43,11 @@ app.get('/', (req,res)=>{
     res.render("index")
 })
 
-app.get('/adminLogin',(req,res)=>{
-    res.render('adminLogin')
-})
-
-// app.post('/adminLogin/:username', async (req,res)=>{
-//     const { adminCode } = req.body;
-//     const { username } = req.params;
-//     console.log("User's Code: ", adminCode)
-
-//     if (adminCode) {
-//         //if code is valid
-//         const user = await sendOrGetData.adminCodeVerification(adminCode);
-//         console.log("User Presesnt: ",user);
-//         if (user) {
-//             // req.session.admin = user;
-//             res.redirect(`days`)
-//             return;
-//         }
-//     }
-//     res.render("logIn")
-
-
-//     res.render('adminLogin')
-// })
 
 
 app.get('/waiters/:username', async (req, res) => {
     const names = req.params.username;
-    const weekdays =  await sendOrGetData.keepDaysChecked(names);
-    // await sendOrGetData.getWeekdays();
-   
+    const weekdays =  await sendOrGetData.keepDaysChecked(names);   
     res.render("daysSelection", {
         names,
         weekdays
@@ -93,22 +67,22 @@ app.get('/days', async (req, res) => {
     res.render("admin", { days });
 });
 
-app.get('/registration', (req, res) => {
+app.get('/signInUser', (req, res) => {
     res.render("signInUser")
 })
 
-app.post('/registration', async (req, res) => {
+app.post('/signInUser', async (req, res) => {
     let { username } = req.body;
 
     if (username) {
         const code = uniqueId();
         username = username.toLowerCase();
         const checking = await sendOrGetData.checkingExistingUsers(username)
-        console.log(" The name ", checking)
-        if (checking == 1) {
+        console.log(" The name ", checking.count)
+        if (checking.count != 0) {
             req.flash('error', username + ' Already Exists.')
         }
-        else {
+        if(checking.count == 0){
             await sendOrGetData.storingUserNames(username, code);
             req.flash('success', 'User was Added -- use the provide code to Log in : ' + code);
         }
@@ -129,16 +103,20 @@ app.post('/login', async (req, res) => {
     const { code } = req.body;
     console.log("User's Code: ", code)
 
-    if (code) {
+    if(code){
         //if code is valid
         const user = await sendOrGetData.codeVerification(code);
-        if (user) {
+        if(user) {
             req.session.user = user;
             res.redirect(`waiters/${user.username}`)
             return;
+        }else{
+            res.redirect("/signInUser")
         }
     }
-    res.render("logIn")
+    else{
+        res.redirect("/login")
+    }
 
 })
 

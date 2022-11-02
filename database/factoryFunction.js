@@ -15,12 +15,13 @@ module.exports = function waitersApp(db) {
     }
 
     const checkingExistingUsers = async (user) => {
-        return await db.oneOrNone('select count(*) from users where username = $1;', [user])
+        const timesEntered = await db.oneOrNone('select count(*) from users where username = $1;', [user])
+        return timesEntered;
 
     }
 
     const codeVerification = async (code) => {
-        const usersName = await db.one('select username from users where password = $1;', [code])
+        const usersName = await db.oneOrNone('select username from users where password = $1;', [code])
         console.log("User: ", usersName)
         return usersName;
     }
@@ -63,7 +64,6 @@ module.exports = function waitersApp(db) {
             const sql = 'select username from shifts join users on users.id = user_id  where weekdays_id  = $1;'
             const users = await db.manyOrNone(sql, day.id)
             const gettingTheObject = users.map(user => user.username);
-            console.log("Getting The Objects : ", gettingTheObject)
 
 
             return {
@@ -93,8 +93,6 @@ module.exports = function waitersApp(db) {
        console.log(userDays);
         for (let i = 0; i < weekdays.length; i++) {
             const day = weekdays[i];
-            // console.log(day.weekdays);
-            console.log('-------------------------');
             for (let j = 0; j < userDays.length; j++) {
                 const user_day = userDays[j];
                 if (user_day.weekdays === day.weekdays) {
@@ -103,7 +101,6 @@ module.exports = function waitersApp(db) {
 
             }
         }
-        // console.log(weekdays);
         return weekdays;
     }
 
