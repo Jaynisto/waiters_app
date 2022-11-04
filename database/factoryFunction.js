@@ -20,6 +20,18 @@ module.exports = function waitersApp(db) {
 
     }
 
+    const checkingExistingAdminName = async (admin) => {
+        const adminCheck = await db.oneOrNone('select count(*)from admin where adminName = $1;', [admin])
+        console.log(adminCheck, "Alright");
+        return adminCheck;
+    }
+
+    const checkingExistingAdminPassword = async (password) => {
+        const adminCheck = await db.one('select count(*) from admin where adminPassword = $1;', [password])
+        console.log(adminCheck, "Alright");
+        return adminCheck;
+    }
+
     const codeVerification = async (code) => {
         const usersName = await db.oneOrNone('select username from users where password = $1;', [code])
         console.log("User: ", usersName)
@@ -64,8 +76,21 @@ module.exports = function waitersApp(db) {
             const sql = 'select username from shifts join users on users.id = user_id  where weekdays_id  = $1;'
             const users = await db.manyOrNone(sql, day.id)
             const gettingTheObject = users.map(user => user.username);
+            if (gettingTheObject.length === 3) {
 
+                day.color = "enough";
+                
+            }
+            else if (gettingTheObject.length > 3) {
+                day.color = "over";
 
+                // users: gettingTheObject;
+                // color: orange
+            }
+            else if( gettingTheObject.length < 3){
+                day.color = "under";
+            }
+            // console.log(day);
             return {
                 ...day,
                 users: gettingTheObject
@@ -79,7 +104,7 @@ module.exports = function waitersApp(db) {
         return data;
     }
 
-    async function adminInfo(names, adminCode){
+    async function adminInfo(names, adminCode) {
         const insertingUserName = 'INSERT INTO admin(adminName,adminPassword) VALUES ($1,$2);';
         await db.none(insertingUserName, [names, adminCode])
     }
@@ -90,14 +115,13 @@ module.exports = function waitersApp(db) {
         join users on users.id = user_id 
         join weekdays on weekdays.id = shifts.weekdays_id 
         where username = $1 `, [user]);
-       console.log(userDays);
         for (let i = 0; i < weekdays.length; i++) {
             const day = weekdays[i];
             for (let j = 0; j < userDays.length; j++) {
                 const user_day = userDays[j];
                 if (user_day.weekdays === day.weekdays) {
                     day.checked = 'checked';
-                }   
+                }
 
             }
         }
@@ -106,7 +130,6 @@ module.exports = function waitersApp(db) {
 
     const adminCodeVerification = async (adminCode) => {
         const usersName = await db.one('select adminName from admin where adminPassword = $1;', [adminCode])
-        console.log("User: ", usersName)
         return usersName;
     }
 
@@ -121,21 +144,8 @@ module.exports = function waitersApp(db) {
         checkingExistingUsers,
         keepDaysChecked,
         adminInfo,
-        adminCodeVerification
+        adminCodeVerification,
+        checkingExistingAdminName,
+        checkingExistingAdminPassword
     }
 }
-
-
-
-
-
-
-var days = [
-    {
-        day: 'Sunday',
-        waiters: [
-            'John',
-            'Lia'
-        ]
-    }
-]

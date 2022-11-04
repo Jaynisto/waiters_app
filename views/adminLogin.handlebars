@@ -8,12 +8,33 @@
     <title>Admin</title>
 </head>
 <body>
+    <div class="login-box">
+        <h2>Login</h2>
 
-    <form action="/adminLogin/{{name}}" method="POST" class="login">
-        <label for="password">Insert Secret Password:</label><br>
-        <input type="text" name="adminCode"><br><br>
-        <button type="submit">Log in</button>
-    </form>
-    
+        <form action="/adminLogin" method="POST">
+            <span class="error-form">
+                <div class="successMessage">
+                    {{messages.success}}
+                </div>
+                <div class="errorMessage">
+                    {{messages.error}}
+                </div><br>
+            </span><br><br>
+            <div class="user-box">
+                <input type="text" name="adminName" tabindex="1" id="user">
+                <label>Username</label>
+            </div>
+
+            <br><br>
+
+            <div class="user-box">
+                <input type="password" name="adminPassword" id="password">
+                <label>Password</label>
+            </div><br>
+
+            <button type="submit" id="submit">Log in</button> 
+        </form>
+    </div>
+    <script src="setTimeOutFunction.js"></script>
 </body>
 </html>

@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/waiters.css">
+    <link rel="stylesheet" href="/css/waiters.css">
     <title>Log In</title>
 </head>
 <body>
     <h1>Login page</h1><br>
     
-    <form action="login" method="POST" class="login">
-        <label for="password">Insert Secret Password:</label><br>
-        <input type="text" name="code"><br><br>
-        <button type="submit">Log in</button>
+    <div class="login-box">
+        <form action="login" method="POST">
+        <div class="user-box">
+            <input type="password" name="code" id="password">
+            <label>Password</label>
+        </div>
+
+        <span class="error-form">
+            <div class="successMessage">
+                {{messages.success}}
+            </div>
+            <div class="errorMessage">
+                {{messages.error}}
+            </div><br>
+        </span><br>
+
+        <button type="submit" id="submit">Log in</button> 
+
     </form>
+
+    </div>
 
 </body>
 </html>

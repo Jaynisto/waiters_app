@@ -8,20 +8,24 @@
 </head>
 <body>
     <h1>Registration Page</h1><br>
-    <div class="container3"> 
+    <div class="login-box">
         <form action="signInUser" method="POST">
-            <div class="successMessage">
-                {{messages.success}}
-            </div>
-            <div class="errorMessage">
-                {{messages.error}}
+            <span class="error-form">
+                <div class="successMessage">
+                    {{messages.success}}
+                </div>
+                <div class="errorMessage">
+                    {{messages.error}}
+                </div><br>
+            </span><br><br>
+            <div class="user-box">
+                <input type="text" name="username">
+                <label>Username:</label>
             </div><br>
-            <label for="username">Username:</label>
-            <input type="text" name="username" width="10px">
-            <br>
             <input type="submit">
         </form> 
-        <button><a href="/logIn">Log in</a></button>       
-    </div>
+        <button class="loginbtn"><a href="/logIn">Log in</a></button>
+    </div>   
+    <script src="setTimeOutFunction.js"></script>
 </body>
 </html>

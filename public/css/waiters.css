@@ -28,12 +28,6 @@ table {
     padding: 10px;
 }
 
-.login{
-    margin: auto;
-    width: 50%;
-    border: 2px solid black;
-    padding: 10px;
-}
 .successMessage {
     color: rgb(59, 219, 10);
 }
@@ -41,3 +35,97 @@ table {
     color: rgba(228, 4, 4, 0.877);
 }
 
+/* ------------------------------------------------------------------- */
+html{
+    height: 100%;
+}
+.login-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    background-color: #807a7a;
+    box-sizing: border-box;
+    box-sizing: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+.login-box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #1E1E1E;
+    pointer-events: none;
+}
+.login-box h2::first-letter{
+    font-size: 25px;
+    color: #03e9f4;
+}
+.login-box .user-box{
+    position: relative;
+}
+.login-box .user-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #1E1E1E;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.login-box .user-box input:focus ~ label, .login-box .user-box input:valid ~ label{
+    top: -25px;
+    left: 0;
+    color: black;
+    font-size: 12px;
+}
+.login-box .user-box input:valid{
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 2px solid rgba(37, 34, 34, 0.8);
+    border-radius: 2px;
+}
+.login-box form a{
+    position: relative;
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.login-box form a:hover{
+    background-color: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4;
+}
+.login-box .user-box:nth-child(4){
+    margin-bottom: 10px;
+}
+.loginbtn {
+    transform: translateX(50px);
+}
+
+/* Responsividade*/
+@media (max-width: 400px)
+{
+  .login-box{
+    width: 350px;
+  }
+}
+
+.over {
+    color: red;
+}
+.under {
+    color: orange;
+}
+.enough {
+    color: green;
+}
