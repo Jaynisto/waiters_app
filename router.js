@@ -122,9 +122,21 @@ app.get('/login', (req, res) => {
 
 app.get('/admin', async (req,res)=>{
     const days = await sendOrGetData.getEnteredWeekdays();
-    console.log(days);
+    const users = await sendOrGetData.viewingUsers();
+    console.log(users);
     res.render("admin", {
         days,
+        users
+    })
+})
+
+app.post('/clearingUser', async (req,res)=>{
+    const waiter = req.body.waiters;
+    const { id } = waiter;
+    console.log(waiter);
+    const clearing = await sendOrGetData.clearingWaiter(waiter)
+    res.redirect("admin",{
+        clearing
     })
 })
 

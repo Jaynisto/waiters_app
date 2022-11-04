@@ -132,8 +132,20 @@ module.exports = function waitersApp(db) {
         const usersName = await db.one('select adminName from admin where adminPassword = $1;', [adminCode])
         return usersName;
     }
+    const viewingUsers = async () =>{
+        const users = await db.any("select username from users;")
+        return users
+    }
+
+    const clearingWaiter = async (name) =>{
+        const deletingWaiter = "DELETE * from users where username = $1"
+        const clearing = await db.none(deletingWaiter,[name]);
+        return clearing;
+    }
 
     return {
+        clearingWaiter,
+        viewingUsers,
         storingUserNames,
         codeVerification,
         getWeekdays,

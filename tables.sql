@@ -24,8 +24,8 @@ CREATE TABLE shifts(
     id SERIAL PRIMARY KEY,
     user_id INT,
     weekdays_id INT,
-    foreign key (user_id) references users(id),
-    foreign key (weekdays_id) references weekdays(id)
+    foreign key (user_id) references users(id) ON DELETE CASCADE,
+    foreign key (weekdays_id) references weekdays(id) ON DELETE CASCADE
 );
 
 CREATE TABLE admin(

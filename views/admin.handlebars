@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Admin Page</h1><br>
         <div class="weekdays">
-                <table border="1" style="border-collapse: collapse;">
+            <table border="1" style="border-collapse: collapse;">
                 <tr>
                 {{#each days}}
                     <th class="{{color}}">{{weekdays}}</th>
@@ -27,7 +27,16 @@
                     {{/each}}
                 </tr>
             </table>
-        </div>
+        </div><br>
+        <form action="/clearingUser" method="post">
+           <label for="waiters">Available Waiters</label>
+           <select name="waiters">
+                {{#each users}}
+                <option value="{{id}}">{{username}}</option>
+                {{/each}}
+            </select>
+            <button type="submit">Clear Waiter</button>
+        </form>
     </div>
 </body>
 
