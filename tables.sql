@@ -4,6 +4,7 @@ grant all privileges on database waiters_app to postgres;
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username VARCHAR(100)
+    password VARCHAR(50)
 );
 
 CREATE TABLE weekdays(

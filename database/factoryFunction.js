@@ -133,13 +133,14 @@ module.exports = function waitersApp(db) {
         return usersName;
     }
     const viewingUsers = async () =>{
-        const users = await db.any("select username from users;")
+        const users = await db.any("select * from users;")
         return users
     }
 
-    const clearingWaiter = async (name) =>{
-        const deletingWaiter = "DELETE * from users where username = $1"
-        const clearing = await db.none(deletingWaiter,[name]);
+    const clearingWaiter = async (id) =>{
+        console.log("This is the second name::::: ", id)
+        const deletingWaiter = "DELETE from users where id = $1"
+        const clearing = await db.none(deletingWaiter,[id]);
         return clearing;
     }
 

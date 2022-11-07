@@ -120,6 +120,7 @@ app.get('/login', (req, res) => {
     res.render("logIn")
 })
 
+
 app.get('/admin', async (req,res)=>{
     const days = await sendOrGetData.getEnteredWeekdays();
     const users = await sendOrGetData.viewingUsers();
@@ -131,20 +132,15 @@ app.get('/admin', async (req,res)=>{
 })
 
 app.post('/clearingUser', async (req,res)=>{
-    const waiter = req.body.waiters;
-    const { id } = waiter;
-    console.log(waiter);
-    const clearing = await sendOrGetData.clearingWaiter(waiter)
-    res.redirect("admin",{
-        clearing
-    })
+     const { id } = req.body;
+    const clearing = await sendOrGetData.clearingWaiter(id)
+    res.redirect("/admin")
 })
 
 
 app.post('/login', async (req, res) => {
     const { code } = req.body;
     if(code){
-        //if code is valid
         const user = await sendOrGetData.codeVerification(code);
         if(user) {
             req.session.user = user;

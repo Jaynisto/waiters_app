@@ -8,7 +8,7 @@ h1{
 
 .btn {
     margin-top: 1%;
-    margin-left: 65%;
+    margin-left: 37%;
 }
 .weekdays {
     display: flex;
@@ -35,10 +35,120 @@ table {
     color: rgba(228, 4, 4, 0.877);
 }
 
+table {
+    width: 80%;
+}
+
+th, tr{
+    padding: 10px
+}
+
+.adminContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.adminForm {
+    width: 400px;
+    
+}
+
+select{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 5px;
+}
+
+button{
+    width: 150px;
+    margin: 10px 0;
+    cursor:pointer;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    transition: .1s ease;
+}
+
+button:hover{
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.adminLogin{
+    width: 180px;
+    margin: 10px 0;
+    cursor:pointer;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    transition: .1s ease;
+}
+
+.adminLogin:hover{
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.waiterLogin{
+    width: 180px;
+    margin: 10px 0;
+    cursor:pointer;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    transition: .1s ease;
+}
+
+.waiterLogin:hover{
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.submitbtn {
+    width: 60px;
+    margin: 10px 0;
+    cursor:pointer;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    transition: .1s ease;
+}
+
+.submitbtn:hover{
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.loginbtn {
+    width: 60px;
+    margin: 10px 0;
+    cursor:pointer;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    transition: .1s ease;
+}
+
+.loginbtn:hover{
+    background-color: #1E1E1E;
+    color: white;
+}
+
 /* ------------------------------------------------------------------- */
 html{
     height: 100%;
 }
+
 .login-box{
     position: absolute;
     top: 50%;
@@ -108,8 +218,11 @@ html{
 .login-box .user-box:nth-child(4){
     margin-bottom: 10px;
 }
+
 .loginbtn {
-    transform: translateX(50px);
+    transform: 
+    translateX(125px)
+    translateY(-46px);
 }
 
 /* Responsividade*/
@@ -121,11 +234,33 @@ html{
 }
 
 .over {
-    color: red;
+    background-color: rgb(202, 10, 10);
+    
+    background-color: rgba(228, 119, 68, 0.342);
+    
+    color: rgb(75, 60, 12);
+    
+    padding: 10px;
 }
-.under {
-    color: orange;
-}
+
 .enough {
-    color: green;
+
+    background-color: rgb(226, 201, 61);
+    
+    background-color: rgba(245, 221, 9, 0.342);
+    
+    color: rgb(75, 60, 12);
+    
+    padding: 10px;
+    
+    }
+
+.under {
+    background-color: rgb(22, 112, 10);
+    
+    background-color: rgba(53, 230, 8, 0.342);
+    
+    color: rgb(75, 60, 12);
+    
+    padding: 10px
 }

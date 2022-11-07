@@ -12,14 +12,14 @@
         <h1>Admin Page</h1><br>
         <div class="weekdays">
             <table border="1" style="border-collapse: collapse;">
-                <tr>
+                <tr >
                 {{#each days}}
-                    <th class="{{color}}">{{weekdays}}</th>
+                    <th >{{weekdays}}</th>
                 {{/each}}
                 </tr>
-                <tr>
+                <tr >
                     {{#each days}}
-                        <td>
+                        <td class="{{color}}">
                         {{#each users}}
                         <li style="list-style-type: none;">{{this}}</li>
                         {{/each}}
@@ -28,15 +28,22 @@
                 </tr>
             </table>
         </div><br>
-        <form action="/clearingUser" method="post">
-           <label for="waiters">Available Waiters</label>
-           <select name="waiters">
-                {{#each users}}
-                <option value="{{id}}">{{username}}</option>
-                {{/each}}
-            </select>
-            <button type="submit">Clear Waiter</button>
-        </form>
+        <div class="adminContainer">
+            <div>
+            <label for="waiters"><strong>Available Waiters:</strong></label>
+            <form action="/clearingUser" method="post">
+                <div>
+                    <select name="id">
+                            {{#each users}}
+                                <option  value="{{id}}">{{username}}</option>
+                            {{/each}}
+                    </select>
+                </div>
+                <button class="clearWaiter" type="submit">Clear Waiter</button>
+                <button><a href="/adminLogin" style="text-decoration: none;">Sign Out</a></button>
+            </form> 
+            </div>
+        </div>
     </div>
 </body>
 
