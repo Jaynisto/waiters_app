@@ -79,11 +79,11 @@ app.post('/adminLogin', async (req, res) => {
             req.flash('error', 'Wrong User Name Entry')
             res.redirect("/adminLogin")
         }
-        if (password.count == 0) {
+        else if (password.count == 0) {
             req.flash('error', 'Wrong Password Entry')
             res.redirect("/adminLogin")
         }
-        if(name != 0 || password != 0){
+        else if(name != 0 || password != 0){
             res.redirect("admin")
             return;
         }
