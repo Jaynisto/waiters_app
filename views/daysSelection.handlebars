@@ -8,14 +8,17 @@
     <title>Days Selection</title>
 </head>
 <body>
-    <h1>Please Select Days.</h1><br>
-    <p>Thank you for signing in <strong>{{names}}</strong>.</p>
+    <h1>Days Selection</h1><br>
+    <p>Thank you for signing in <strong>{{names}}</strong><br> Please Select the Days that you would like to be available.</p>
     <form action="/waiters/{{names}}" method="post">
-        <div class="form">
-            {{#each weekdays}}
-            <input type="checkbox" {{checked}} name="days" value="{{id}}">
-            <label for="monday">{{weekdays}}</label><br>
-            {{/each}}
+        <div class="days">
+            <div class="cat action">
+                    {{#each weekdays}}
+                <label>
+                    <input type="checkbox" {{checked}} name="days" value="{{id}}"><span>{{weekdays}}</span>
+                </label>
+                {{/each}}
+            </div>
         </div>
         <div class="btn">
             <button type="submit">Submit</button>

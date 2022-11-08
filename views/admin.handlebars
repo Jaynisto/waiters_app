@@ -21,7 +21,7 @@
                     {{#each days}}
                         <td class="{{color}}">
                         {{#each users}}
-                        <li style="list-style-type: none;">{{this}}</li>
+                        <li class="color" style="list-style-type: none;">{{this}}</li>
                         {{/each}}
                         </td>
                     {{/each}}
@@ -42,6 +42,20 @@
                 <button class="clearWaiter" type="submit">Clear Waiter</button>
                 <button><a href="/adminLogin" style="text-decoration: none;">Sign Out</a></button>
             </form> 
+            </div>
+            
+        </div><br><br>
+        <div class="coloSpin">
+            <div class="success">
+                <p><strong>Not Enough Waiters!</strong> Feel Free To Add...</p>
+            </div>
+
+            <div class="warning">
+                <p><strong>Waiters Are Enough!</strong> ...</p>
+            </div>
+            
+            <div class="danger">
+                <p><strong>Waiters Are Over Crowded!</strong> ...</p>
             </div>
         </div>
     </div>
