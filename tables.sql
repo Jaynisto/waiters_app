@@ -1,9 +1,6 @@
-CREATE DATABASE waiters_app;
-grant all privileges on database waiters_app to postgres;
-
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    username VARCHAR(100)
+    username VARCHAR(100),
     password VARCHAR(50)
 );
 
@@ -36,3 +33,5 @@ CREATE TABLE admin(
 );
 
 INSERT INTO admin(adminName,adminPassword) VALUES('Fanie', 'Johnson28@admin');
+-- CREATE DATABASE waiters_app;
+-- grant all privileges on database waiters_app to postgres;
